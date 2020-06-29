@@ -1,0 +1,242 @@
+
+@font-face {
+  font-family: "Dancing Script";
+  src: url(/assets/fonts/logo_font.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "GothicA1-Regular";
+  src: url(/assets/fonts/GothicA1-Regular.ttf) format("truetype");
+}
+
+body {
+	font-family: "GothicA1-Regular", sans-serif;
+	margin: 0;	
+}
+a {
+	text-decoration: none;
+}
+.header {
+	width: 90%;
+	margin: 0 auto;
+	min-height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	.logo {
+		font-family: "Dancing Script", sans-serif;
+		font-size: 40px;
+		font-weight: 600;
+		color: #900537;
+	}
+	.panel-link {
+		font-size: 20px;
+		color: black;
+	}
+}
+.shop-container {
+	width: 90%;
+	margin: 20px auto;
+	.catalogue {
+		display: flex;
+		flex-wrap: wrap;
+		.flower-container {
+		    min-width: 250px;
+		    border: 1px solid #E8E8E8;
+		    border-radius: 4px;
+		    margin-right: 35px;
+		    margin-bottom: 35px;
+		    user-select: none;
+		    .image-container {
+		    	position: relative;
+		    	cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+		    	.image {
+					height: 260px;
+					max-width: 250px;
+					object-fit: cover;
+		    	}
+		    	.add-to-cart-overlay {
+					position: absolute;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					display: none;
+					align-items: center;
+					justify-content: center;
+					background-color: #00000066;
+					.add-to-cart-btn {
+						background: #3ed286;
+						padding: 7px 14px;
+						font-size: 20px;
+						color: white;
+						border-radius: 3px;
+					}
+		    	}
+		    	.in-cart-btn {
+					position: absolute;
+					top: -15px;
+					left: -15px;
+					padding: 10px;
+					height: 50px;
+					width: 50px;
+					border-radius: 70px;
+					align-items: center;
+					justify-content: center;
+					background-color: #ff6446;
+					color: white;
+					font-weight: 600;
+					display: none;
+					&.visible {
+						display: flex;
+					}
+		    	}
+		    }
+		    .image-container:hover {
+		    	.add-to-cart-overlay {
+		    		display: flex;
+		    	}
+		    }
+		    .meta-data {
+		    	padding: 10px;
+		    	text-align: center;
+		    	.name {
+		    		font-weight: 600;
+		    	}
+		    	.star-ratings {
+		    		margin-top: 5px;
+		    	}
+		    }
+		}
+	}
+}
+.panel-container {
+	width: 90%;
+	margin: 20px auto;
+	.add-form {
+		width: 50%;
+		margin: 0 auto;
+		h2 {
+			text-align: center;
+		}
+		#form {
+		    max-width: 700px;
+		    padding: 2rem;
+		    box-sizing: border-box;
+		}
+
+		.form-field {
+		    display: flex;
+		    margin: 0 0 1rem 0;
+		}
+		.form-upload-field {
+			display: flex;
+			flex-direction: column;
+		}
+
+		label,
+		input,
+		select {
+		    width: calc(100% - 80px);
+		    padding: 0.5rem;
+		    box-sizing: border-box;
+		    justify-content: space-between;
+		    font-size: 1.1rem;
+		}
+
+		label {
+		    text-align: right;
+		    width: 80px;
+		}
+
+		input, select {
+		    border: 2px solid #aaa;
+		    border-radius: 2px;
+		}
+		.submit-btn {
+			cursor: pointer;
+		}
+	}
+}
+
+.fileUploader {
+    width: calc(100% - 80px);
+    margin: 0 0 0 80px;
+}
+.fileContainer {
+	box-shadow: none;
+	margin: 0;
+	padding: 0;
+}
+.upload-error {
+    width: calc(100% - 80px);
+    margin: 0 0 0 80px;
+    text-align: center;
+    margin-bottom: 20px;
+    opacity: 0;
+    color: red;
+    font-size: 14px;
+    &.visible {
+    	opacity: 1;
+    }
+}
+
+.success-popup {
+    position: absolute;
+	top: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    .message {
+		padding: 10px;
+		background-color: #c4c0c0;
+		border-radius: 4px;
+		color: white;
+    }
+    &.visible {
+	    visibility: visible;
+	    opacity: 1;
+    }
+}
+
+.no-content-placeholder {
+	margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+	.placeholder-image {
+		width: 500px;
+	}
+	.message {
+		font-family: "Dancing Script", sans-serif;
+		text-align: center;
+		width: 100%;
+		font-size: 50px;
+	}
+	.add-more-btn {
+	    padding: 6px 23px;
+	    background: #900737;
+	    border-radius: 30px;
+	    color: white;
+	    font-weight: 300;
+	    font-size: 20px;
+	    margin: 10px 0;
+	    transition: all 0.2s ease-in;
+	    cursor: pointer;
+	    outline: none;
+	    border: none;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.panel-container .add-form {
+		width: 100%;
+	}
+}
