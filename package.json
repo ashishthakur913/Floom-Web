@@ -19,6 +19,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "websocket-extensions": ">=0.1.4",
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
