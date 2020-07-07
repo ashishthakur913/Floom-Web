@@ -21,11 +21,14 @@ export default class Flower extends React.Component<Props> {
 	}
 
 	render = () => {
+		let imageURL = this.props.flower.get('image_url')
+		// added a placeholder if there is no image
+		imageURL = imageURL ? imageURL : "/assets/img/flower.png"
 		let addToCartText = this.state.addedToCart ? 'Remove from cart' : 'Add to cart';
 		let addToCartVisibility = this.state.addedToCart ? 'visible' : '';
 		return <div className="flower-container" >
 			<div className="image-container">
-				<img className="image" src={this.props.flower.get('image_url')}  />
+				<img className="image" src={imageURL}  />
 				<div className="add-to-cart-overlay" onClick={this.toggleAddToCart.bind(this)}>
 					<div className="add-to-cart-btn">{addToCartText}</div>
 				</div>

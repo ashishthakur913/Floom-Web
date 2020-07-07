@@ -18,7 +18,7 @@ type State = {
 
 const initialState = {
 	name: "",
-	rating: "",
+	rating: "1",
 	price: "",
 	imageUploadError: false,
 	formSubmitSuccess: false
@@ -52,7 +52,7 @@ export default class Class extends React.Component<Props> {
     private addFlowerSubmit(e) {
         e.preventDefault();
         let {uploadedImageUrl} = this.props;
-        if (this.form.current.reportValidity() && uploadedImageUrl) {
+        if (this.form.current.reportValidity()) {
         	let {name, price, rating} = this.state;
             let flower = {
             	name: name,
@@ -66,7 +66,8 @@ export default class Class extends React.Component<Props> {
             setTimeout(() => this.setState({formSubmitSuccess: false}), 1000)
         }
         if (!uploadedImageUrl) {
-        	this.showImageUploadError()
+			// Made image upload optional for now because of S3 upload issues
+			// this.showImageUploadError()
         }
     }
 
