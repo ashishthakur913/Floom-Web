@@ -18,10 +18,10 @@ export const AddFlower = (flower: FlowerStore) => createAjaxAction({
 	method: "POST",
 	data: JSON.stringify(flower),
 	onSuccess: (response, dispatch) => {
-		console.log(response, 'Done!')
+		// show error toast
 	},
 	onFailure: (response, dispatch) => {
-		console.log('Something went wrong')
+		// show error toast
 	}
 });
 
@@ -35,7 +35,7 @@ export const UploadImage = (fd: FormData) => createAjaxAction({
 		dispatch(SetImageUrl(response.url))
 	},
 	onFailure: (response, dispatch) => {
-		console.log('Something went wrong')
+		// show error toast
 	}
 });
 

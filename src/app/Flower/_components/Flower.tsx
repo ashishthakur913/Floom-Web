@@ -1,6 +1,7 @@
 import * as React from 'react';
 import FlowerStore from '../_stores/FlowerStore';
 import StarRatings from 'react-star-ratings';
+import { API_HOST } from '../../config/config.json';
 
 export type Props = {
 	flower: FlowerStore
@@ -9,6 +10,8 @@ export type Props = {
 type State = {
 	addedToCart: boolean
 }
+
+const IMAGE_PLACEHOLDER_URL = "/assets/img/flower.png"
 
 export default class Flower extends React.Component<Props> {
 
@@ -20,15 +23,17 @@ export default class Flower extends React.Component<Props> {
 		this.setState({addedToCart: !this.state.addedToCart})
 	}
 
+	private showFallback(e) { e.target.src = IMAGE_PLACEHOLDER_URL }
+
 	render = () => {
 		let imageURL = this.props.flower.get('image_url')
 		// added a placeholder if there is no image
-		imageURL = imageURL ? imageURL : "/assets/img/flower.png"
+		imageURL = imageURL ? API_HOST + imageURL : IMAGE_PLACEHOLDER_URL
 		let addToCartText = this.state.addedToCart ? 'Remove from cart' : 'Add to cart';
 		let addToCartVisibility = this.state.addedToCart ? 'visible' : '';
 		return <div className="flower-container" >
 			<div className="image-container">
-				<img className="image" src={imageURL}  />
+				<img className="image" src={imageURL} onError={(e) => this.showFallback(e)} />
 				<div className="add-to-cart-overlay" onClick={this.toggleAddToCart.bind(this)}>
 					<div className="add-to-cart-btn">{addToCartText}</div>
 				</div>

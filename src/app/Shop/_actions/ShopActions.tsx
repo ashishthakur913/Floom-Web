@@ -17,7 +17,6 @@ export const FetchFlowers = () => createAjaxAction({
 	url: "api/v1.0/flower/",
 	method: "GET",
 	onSuccess: (response, dispatch) => {
-		console.log(response, 'Done!')
 		dispatch(SetFlowers(response.flowers))
 	},
 	onFailure: (response, dispatch) => {
